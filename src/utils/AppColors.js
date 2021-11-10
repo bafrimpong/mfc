@@ -1,0 +1,11 @@
+export const lightGreen = "#bbee39";
+export const darkGreen = "#33691e";
+export const colorWhite = "#fff";
+export const statusBarColor = "#69f0ae";
+export const bgColor = "#c8e6c9";
+export const lightRed = "#ffcdd2";
+export const midColor = "#d32f2f";
+export const darkRed = "#b71c1c";
+export const darkBlue = "#0d47a1";
+export const darkBlue2 = "#2962ff"
+export const lightBlue = "#64b5f6";
