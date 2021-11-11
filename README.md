@@ -28,7 +28,7 @@ expo run:ios  for iOS device
 
 - Please follow the inserted video to see how the App works
 
-  ![Video](src/utils/udacicards.gif 'How the app works')
+  ![Video](udacicards.gif 'How the app works')
 
 # Database
 
