@@ -26,10 +26,9 @@ expo run:ios  for iOS device
 
 ## How to Use the App
 
-- Please follow the inserted video to see how the App works 
-<video width="320" height="240" controls>
-  <source src="udacicards.mp4" type="video/mp4">
-</video>
+- Please follow the inserted video to see how the App works
+
+  ![Video](src/utils/udacicards.gif 'How the app works')
 
 # Database
 
