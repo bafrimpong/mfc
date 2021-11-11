@@ -6,14 +6,17 @@ A mobile application (Android or iOS - or both) that allows users to study colle
 
 The App is a 3rd project out of 3 in a path I am following at Udacity titled React Nanodegree. It encompasses the fundamental aspects of building a native application including handling infinite lists, routing, and user input.
 
-## Loading the App
+## Creating the App
 
 The project uses the Create-React-Native-App in creating the starter template. 
 The `create-react-native-app` command can be issued at your favourite command line tool only when Node is installed or you can use yarn.
 
-Clone the app from my GitHub repo using the command 
-```git clone https://github.com/bafrimpong/udacicards.git && npm install```
+![Installation](src/utils/installation.png "installation screen")
 
+Clone the app from my GitHub repo using the command 
+```git clone https://github.com/bafrimpong/udacicards.git && yarn install```
+
+## Running the App
 When all the dependencies are installed, launch the app with
 
 ```
@@ -23,34 +26,59 @@ OR
 ```
 expo run:ios  for iOS device
 ```
+Also one can opt to use `yarn android` OR `yarn ios` whichever is convenient.
+### NOTE
+The App have been tested only on Android devices both physical `Infinix X572` and emulator and works well.
 
 ## How to Use the App
 
 - Please follow the inserted video to see how the App works
 
-  ![Video](udacicards.gif 'How the app works')
+  ![Video](src/utils/udacicards.gif 'How the app works')
 
 # Database
 
 The App uses AsyncStorage to store data.
 
-The `AppDataSource.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+The `AppDataSource.js` file represents a fake database and methods that let you access data. The data is structured such as below
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+```
+  deck: {
+    id,
+    title,
+    questions : [
+      {
+        question
+        answer
+      }
+    ]
+  }
+
+  'this-is-deck-id': {
+    id: this-is-deck-id,
+    title: 'Ruby on Rails',
+    questions: [
+      {
+        question: Who invented Ruby?,
+        answer: Bismark A. Frimpong
+      },
+      {
+        question: What is the current version of Ruby?,
+        answer: 5.0.2
+      }
+    ]
+  }
+```
+The above shows a typical structure of the database the app is using through the usage of `AsyncStorage`.
 
 ## Data
-
-There are two types of objects stored in our database:
-
-* Users
-* Questions
-
 
 The app code will talk to the database via the following methods:
 
 * `getDecks()`
 * `getSaveDeckTitle(title)`
 * `addCardToDeck(deckId, card)`
+* `deleteCard(cardId)`
 
 1) `getDecks()` Method
 
@@ -66,7 +94,12 @@ The app code will talk to the database via the following methods:
 
 *Description*: Saves a card to a specified deck with the deck id and the card.  
 *Parameters*:  A deck object with the card
-*Return Value*:  An object that has the following properties: `id`, `author`, `optionOne`, `optionTwo`, `timestamp`. More details about these properties:
+*Return Value*:  A deck object with its cards
+
+4) `deleteCard(cardId)` Method
+*Description*: Deletes or removes a card from a deck.
+*Parameters*: A card id
+*Return Value*: A deck object with with its cards
 
 ## Contributing
 

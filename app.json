@@ -3,9 +3,37 @@
     "name": "mobileflashcards",
     "slug": "mobileflashcards",
     "version": "1.0.0",
+    "orientation": "portrait",
+    "description": "Quiz apps forever",
+    "icon": "./assets/flashcards-100.png",
+    "notification": {
+      "icon": "./assets/flashcards-50.png"
+    },
+    "splash": {
+      "image": "./assets/flashcards-100.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.flashcards.exp"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/flashcards-50.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "org.flashcards.exp"
+    },
+    "web": {
+      "favicon": "./assets/flashcards-50.png"
+    }
   },
   "name": "mobileflashcards"
 }

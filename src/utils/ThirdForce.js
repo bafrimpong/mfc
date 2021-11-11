@@ -3,6 +3,7 @@ import { StyleSheet, View, Button } from "react-native"
 import * as Notifications from "expo-notifications"
 import * as Permissions from "expo-permissions"
 import { Alert } from "react-native"
+import { UDACICARDS_NOTIFICATION_KEY } from "./generics"
 
 const notificationContent = {
   title: "Attempt a quiz for today",
@@ -20,9 +21,8 @@ const notificationContent = {
 
 const notificationTrigger = {
   trigger: {
-    channelId: 'default',
-    hour: 21,
-    minute: 8,
+    hour: 5,
+    minute: 56,
     repeats: true
   }
 }
@@ -48,12 +48,22 @@ export const ThirdForcePermissions = () => {
     })
 }
 
-export const  TriggerThirdForceNotifications = async () => {
+export const  TriggerThirdForceNotifications = () => {
   ThirdForcePermissions();
 
-  await Notifications.scheduleNotificationAsync({
-    content: notificationContent,
-    trigger: notificationTrigger,
-    
+  Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Attempt a quiz for today",
+      body: "Don't forget to attempt atleast a quiz for today",
+      priority: "high",
+      sticky: false,
+      vibrate: true,
+      sound: true,
+    },
+    trigger: {
+      seconds: 5
+      // hour: 6,
+      // minute: 19
+    }
   })
 }

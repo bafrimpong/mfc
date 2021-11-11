@@ -1,9 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
+// import * as Notifications from 'expo-notifications';
+// import * as Permissions from 'expo-permissions';
+import { Notifications, Permissions } from 'expo'
 import { Alert } from 'react-native';
 
-export const UDACICARDS_NOTIFICATION_KEY = "udacicards:5123";
+export const UDACICARDS_NOTIFICATION_KEY = "udacicards:442";
 
 export const GET_DECKS = "GET_DECKS";
 export const GET_DECK_BY_ID = "GET_DECK_BY_ID";
@@ -20,18 +21,18 @@ export async function clearLocalNotification() {
 function createNotification() {
     console.log("Point 5")
     return {
-        title: "Attempt a quiz for today",
-        body: "Don't forget to attempt atleast a quiz for today",
+        title: 'Log your stats!',
+        body: "👋 Don't forget to log your stats for today!",
         ios: {
-            sound: true
+            sound: true,
         },
         android: {
             sound: true,
-            priority: "high",
+            priority: 'high',
             sticky: false,
-            vibrate: true
+            vibrate: true,
         }
-    };
+    }
 }
 
 export function setLocalNotification() {
@@ -40,31 +41,22 @@ export function setLocalNotification() {
         .then((data) => {
             console.log("Point 1")
             if (data === null) {
-                Notifications.requestPermissionsAsync(Permissions.NOTIFICATIONS).then(({ status }) => {
+                Permissions.askAsync(Permissions.NOTIFICATIONS).then(({ status }) => {
                     console.log("Point 2")
                     if (status === "granted") {
                         console.log("Point 3")
                         Notifications.cancelAllScheduledNotificationsAsync();
                         let today = new Date()
                         today.setDate(today.getDate)
-                        today.setHours(16)
-                        today.setMinutes(44)
+                        today.setHours(6)
+                        today.setMinutes(35)
                         console.log("Point 4")
 
-                        Notifications.scheduleNotificationAsync({
-                                content: {
-                                    // createNotification
-                                    title: "Bismark",
-                                    body: "Am here worried for a solutn",
-                                    priority: "high",
-                                    vibrate: true
-                                },
-                                trigger: {
-                                    channelId: UDACICARDS_NOTIFICATION_KEY,
-                                    hour: today.getHours(),
-                                    minute: today.getMinutes(),
-                                    // repeats: true
-                                },
+                        Notifications.scheduleNotificationAsync(
+                            createNotification(),
+                            {
+                                time: today,
+                                repeat: "day"
                             }
                         )
                         console.log("Point 6")
